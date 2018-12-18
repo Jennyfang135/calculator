@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator </title>
+	<script src="calculator.js"></script>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="main.css" rel="stylesheet type="text/css" />
+</head>
+<body>
+	<h1>My Calculator</h1>
+    		    			
+    <div class="button-container">
+        <div id="dis"> </div>
+        <div class="button-item" onclick="reset()"> AC </div>
+        <div class="button-item" onclick="showOposite()"> +/– </div>
+        <div class="button-item" onclick="disPercentageValue()"> % </div>
+        <div class="btnOperator" onclick="disValue('/')"> ÷ </div>
+        <div class="button-item" onclick="disValue(7)"> 7 </div>
+        <div class="button-item" onclick="disValue(8)"> 8</div>
+        <div class="button-item" onclick="disValue(9)"> 9 </div>
+        <div class="btnOperator" onclick="disValue('*')">x</div>
+                
+        <div class="button-item" onclick="disValue(4)"> 4 </div>
+        <div class="button-item" onclick="disValue(5)"> 5 </div>
+        <div class="button-item" onclick="disValue(6)"> 6 </div>
+        <div class="btnOperator" onclick="disValue('-')"> – </div>
+
+        <div class="button-item" onclick="disValue(1)"> 1 </div>
+        <div class="button-item" onclick="disValue(2)"> 2 </div>
+        <div class="button-item" onclick="disValue(3)"> 3 </div>
+        <div class="btnOperator" onclick="disValue('+')">+</div>
+        
+        <div id="btn0Style" onclick="disValue(0)">0</div>
+        <div class="button-item" onclick="disValue('.')">.</div>
+        <div class="btnOperator" onclick="showAnswer()"> = </div>
+    </div>	
+          
+</body>
+	
+</html>
