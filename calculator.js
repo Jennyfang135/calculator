@@ -25,9 +25,7 @@ function disPercentageValue(){
   for(var i = len; i>=0; i--){ 
     if (checkOperator(i)){
       percentageNumber =eval(displayValue.substring(i+1))/100;
-      console.log("percentageNumber "+percentageNumber);
       displayValue = displayValue.slice(0,i)+"+"+percentageNumber;
-      console.log("displayValue "+ displayValue);
       document.getElementById('dis').innerHTML = percentageNumber;
       return;
     }
@@ -53,7 +51,6 @@ function showAnswer(){
     }    
     document.getElementById('dis').innerHTML = eval(displayValue);
     displayValue = eval(displayValue);
-    console.log("displayValue "+displayValue);
     shownAns = true;
     return;
   }
@@ -87,7 +84,7 @@ function checkOperator(index) {
  
 function normalVersion(){
   var elements = document.getElementsByClassName('button-container'); 
-    elements[0].style.background= "black";
+  elements[0].style.background= "black";
   elements = document.getElementsByClassName('button-item');
   for (var i=0;i<elements.length;i++){
     elements[i].style.background= "grey";
@@ -102,7 +99,7 @@ function normalVersion(){
 function christmasVersion(){
   var elements = document.getElementsByClassName('button-container');
   
-    elements[0].style.background = "url('christmas2.jpg')";
+  elements[0].style.background = "url('christmas2.jpg')";
   
   elements = document.getElementsByClassName('button-item');
   for (var i=0;i<elements.length;i++){
