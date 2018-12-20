@@ -104,7 +104,7 @@ function normalVersion(){
   changeBtnBgColor('button-item','grey');
   changeBtn0BgColor('grey');
   changeBtnBgColor('btnOperator', '#FF4500');
-  
+  changeH1fontColor('black');
 }
 //set background color when Christmasy button is clicked
 function christmasVersion(){
@@ -112,7 +112,12 @@ function christmasVersion(){
   changeBtnBgColor('button-item','#006400');
   changeBtn0BgColor('#006400');
   changeBtnBgColor('btnOperator', 'red');
-  
+  changeH1fontColor('#006400');
+}
+
+function changeH1fontColor(colorOfChoice){
+  var elements = document.getElementsByClassName('h1'); 
+  elements[0].style.color= colorOfChoice;
 }
 //change background color for Container
 function changeContainerBgColor(colorOfChoice){
