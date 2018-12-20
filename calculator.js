@@ -21,20 +21,42 @@ function disValue(val){
 // do percetage function
 function disPercentageValue(){
   var percentageNumber=0; 
-  var len = displayValue.length-1;
-  for(var i = len; i>=0; i--){ 
-    if (checkOperator(i)){
-      percentageNumber =eval(displayValue.substring(i+1))/100;
-      displayValue = displayValue.slice(0,i)+"+"+percentageNumber;
-      document.getElementById('dis').innerHTML = percentageNumber;
-      return;
-    }
-  }  
-  percentageNumber = eval(displayValue)/100;
-  displayValue = percentageNumber;     
- 	document.getElementById('dis').innerHTML = percentageNumber;
+  var i = findLastOprIndex(displayValue);
+  if (i=== -2){
+    percentageNumber = eval(displayValue)/100;
+    displayValue = percentageNumber;     
+  }
+  else{
+    percentageNumber =eval(displayValue.substring(i+1))/100;
+    displayValue = displayValue.slice(0,i)+"+"+percentageNumber;    
+  }
+  document.getElementById('dis').innerHTML = percentageNumber;
 }	
 
+//show oposite value when +/- button is clicked
+function showOposite(){
+  var i = findLastOprIndex(displayValue);
+  if (i=== -2){
+    displayValue = -displayValue;
+    document.getElementById('dis').innerHTML = eval(displayValue);
+  }
+  else{
+    var number = -eval(displayValue.substring(i+1))
+    displayValue = displayValue.slice(0,i)+"+"+number;
+    document.getElementById('dis').innerHTML = number;
+  }
+}
+
+function findLastOprIndex(disVal){
+  
+  var len = disVal.length-1;
+  for(var i = len; i>=0; i--){ 
+    if (checkOperator(i)){
+      return i;
+    }
+  }
+  return -2;
+}
 //do calculation and show answer
 function showAnswer(){
   var lastIndex = displayValue.length-1;  
@@ -52,7 +74,6 @@ function showAnswer(){
     document.getElementById('dis').innerHTML = eval(displayValue);
     displayValue = eval(displayValue);
     shownAns = true;
-    return;
   }
   else{
     document.getElementById('dis').innerHTML = displayValue;
@@ -66,12 +87,8 @@ function reset(){
  	document.getElementById("dis").innerHTML="0";
 }
 
-//show oposite value when +/- button is clicked
-function showOposite(){
-	displayValue = -displayValue;
-	document.getElementById('dis').innerHTML = eval(displayValue);
-}
 
+//check if character at position indes is an operator or not
 function checkOperator(index) {
   if (displayValue.charAt(index)=='+' || displayValue.charAt(index) =='-' ||
     displayValue.charAt(index)=='*' || displayValue.charAt(index)=='/'){
@@ -81,33 +98,37 @@ function checkOperator(index) {
     return false;
   }
 }
- 
+//set background color when Normal button is clicked 
 function normalVersion(){
+  changeContainerBgColor("black");
+  changeBtnBgColor('button-item','grey');
+  changeBtn0BgColor('grey');
+  changeBtnBgColor('btnOperator', '#FF4500');
+  
+}
+//set background color when Christmasy button is clicked
+function christmasVersion(){
+  changeContainerBgColor("url('christmas2.jpg')");
+  changeBtnBgColor('button-item','#006400');
+  changeBtn0BgColor('#006400');
+  changeBtnBgColor('btnOperator', 'red');
+  
+}
+//change background color for Container
+function changeContainerBgColor(colorOfChoice){
   var elements = document.getElementsByClassName('button-container'); 
-  elements[0].style.background= "black";
-  elements = document.getElementsByClassName('button-item');
-  for (var i=0;i<elements.length;i++){
-    elements[i].style.background= "grey";
-  }
-  document.getElementById('btn0Style').style.background="grey";
-  elements=document.getElementsByClassName('btnOperator')
-  for (var i=0;i<elements.length;i++){
-    elements[i].style.background= "#FF4500";
-  }
+  elements[0].style.background= colorOfChoice;
 }
 
-function christmasVersion(){
-  var elements = document.getElementsByClassName('button-container');
-  
-  elements[0].style.background = "url('christmas2.jpg')";
-  
-  elements = document.getElementsByClassName('button-item');
+//change background color for buttons of given classname
+function changeBtnBgColor(classname, colorOfChoice){
+  var elements=document.getElementsByClassName(classname);
   for (var i=0;i<elements.length;i++){
-    elements[i].style.background= "#006400";
-  }
-  document.getElementById('btn0Style').style.background="#006400";
-  elements=document.getElementsByClassName('btnOperator')
-  for (var i=0;i<elements.length;i++){
-    elements[i].style.background= "red";
-  }
+    elements[i].style.background= colorOfChoice;
+  } 
+}
+
+//change background color for button 0
+function changeBtn0BgColor(colorOfChoice){
+  document.getElementById('btn0Style').style.background=colorOfChoice;
 }
