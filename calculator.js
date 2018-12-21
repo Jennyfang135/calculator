@@ -77,7 +77,7 @@ function disPercentageValue(){
   }
   else{     
     var i = findLastOprIndex(displayValue);
-    if (i=== -2){
+    if (i=== -2 || (i===0 && displayValue.charAt(0)=='-')){
       percentageNumber = eval(displayValue)/100;
       displayValue = percentageNumber;     
     }
